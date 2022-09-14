@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Radio+Canada:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.img {
+  background-color: teal;
+  width: 100%;
+  font-weight: bold;
+  background-image: url("../../img/lindo-perrito-haciendose-pasar-persona-negocios_23-2148985938.jpg");
+  display: grid;
+  height: 100vh;
+  background-repeat: no-repeat;
+  /*  background-size: cover; */
+}
+
+.titulo {
+  font-size: 100px;
+  margin-left: 100px;
+  font-family: "Bungee", cursive;
+  font-style: italic;
+  font-variant: small-caps;
+}
+
+.info {
+  margin-right: 60px;
+  /*   margin-top: 20px; */
+  font-family: "Radio Canada", sans-serif;
+  text-align: right;
+  font-size: 25px;
+}
+
+.button {
+  font-size: medium;
+  font-weight: bold;
+
+  border-radius: 15px;
+  background-color: rgb(227, 163, 26);
+  position: absolute;
+  right: 100px;
+  top: 80%;
+
+  padding: 8px;
+}
