@@ -16,10 +16,11 @@ export default function LandingPage() {
         Empecemos...
         <br />
       </p>
-      <Link to="/home">
-        <button className={style.button}> Ingresar</button>
-      </Link>
-      {/*   </div> */}
+      <div className={style.cont__button}>
+        <Link to="/home">
+          <button className={style.button}> Ingresar</button>
+        </Link>
+      </div>
     </div>
   );
 }
