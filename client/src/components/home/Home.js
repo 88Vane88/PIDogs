@@ -1,4 +1,4 @@
-import React, { useInsertionEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import style from "../home/Home.module.css";
 import { useEffect, useState } from "react";
@@ -9,18 +9,28 @@ import Detalle from "../detalle/Detail";
 import Create from "../create/Create";
 import Dogs from "../card/Card";
 import Loading from "../loading/Loading";
-import { getDogs, filterDogsByStatus } from "../../redux/actions/index";
+import SearchBar from "../searchBar/SearchBar";
+import {
+  getDogs,
+  filterDogsByStatus,
+  orderByName,
+  orderByPeso,
+  getTemps,
+  filterDogsByTemperament,
+} from "../../redux/actions/index";
 
 export default function Home() {
   /*  const { isLoading, dogs } = useDogs(); */
   const dispatch = useDispatch();
 
   const allDogs = useSelector((state) => state.dogs); //traeme todo del estado Dogs
+  const allTemps = useSelector((state) => state.temps);
 
   //TODOS LOS DOGS:
   useEffect(() => {
     //traigo del estado los Dogs y que se monte
-    dispatch(getDogs()); //despacho accion e invoco función
+    dispatch(getDogs());
+    dispatch(getTemps()); //despacho accion e invoco función
   }, [dispatch]);
 
   //PAGINADO:
@@ -36,11 +46,34 @@ export default function Home() {
     setCurrentPage(pageNumber);
   };
 
-  //FILTRADO POR ESTADO
+  //FILTRADO POR ESTADO:
   function handleFilterStatus(e) {
     dispatch(filterDogsByStatus(e.target.value));
   }
 
+  //ORDEN POR TEMPS:
+  function handleFilterTemps(e) {
+    dispatch(filterDogsByTemperament(e.target.value));
+  }
+
+  //ORDEN ALFABETICO:
+  const [ordAlf, setOrdAlf] = useState("");
+
+  function handleSortName(e) {
+    e.preventDefault();
+    dispatch(orderByName(e.target.value));
+    setCurrentPage(1); //hacelo en pag 1
+    setOrdAlf(`Ordenando ${e.target.value}`);
+  }
+
+  //ORDEN POR PESO:
+  const [ordWeight, setOrdWeight] = useState("");
+  function handleSortWeight(e) {
+    e.preventDefault();
+    dispatch(orderByPeso(e.target.value));
+    setCurrentPage(1);
+    setOrdWeight(`Ordenando ${e.target.value}`);
+  }
   return (
     <div className={style.img}>
       <div className={style.nav}>
@@ -51,13 +84,16 @@ export default function Home() {
       </div>
       <div className={style.orden__filtro}>
         <div className={style.alfabeto}>
-          <select className={style.alfabeto__option}>
+          <select
+            className={style.alfabeto__option}
+            onChange={(e) => handleSortName(e)}
+          >
             <option value="orden">Orden Alfabetico</option>
             <option value="asc">A-Z</option>
             <option value="desc">Z-A</option>
           </select>
         </div>
-        <div className={style.peso}>
+        <div className={style.peso} onChange={(e) => handleSortWeight(e)}>
           <select className={style.peso__option}>
             <option value="peso">Peso</option>
             <option value="maximo">Máximo</option>
@@ -65,8 +101,14 @@ export default function Home() {
           </select>
         </div>
         <div className={style.temp}>
-          <select className={style.temp__option}>
-            <option>Temperamentos</option>
+          <select
+            className={style.temp__option}
+            onChange={(e) => handleFilterTemps(e)}
+          >
+            <option value="todos">Todos</option>
+            {allTemps?.map((t) => (
+              <option>{t.temperament}</option>
+            ))}
           </select>
         </div>
         <div className={style.creados}>
@@ -87,6 +129,7 @@ export default function Home() {
         allDogs={allDogs.length}
         paginado={paginado}
       />
+      <SearchBar className={style.searchbar} />
 
       {currentDogsInPage?.map((p) => {
         return (

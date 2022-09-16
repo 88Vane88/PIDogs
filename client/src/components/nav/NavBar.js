@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 export default function Nav() {
   const dispatch = useDispatch();
 
+  //CARGAR TODOS LOS PERROS
   function handleClick(e) {
     e.preventDefault();
     dispatch(getDogs());

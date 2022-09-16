@@ -4,6 +4,7 @@ import "./App.css";
 /* import Detail from "./components/detalle/Detail"; */
 import Home from "./components/home/Home";
 import Inicio from "./components/landingPage/LandingPage";
+import Nav from "./components/nav/NavBar";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Inicio} />
           <Route path="/home" component={Home} />
+          <Route path="/" component={Nav} />
           {/*  <Route path="/detail/:id" component={Detail} /> */}
           {/*  <Route path="/create" component={Create} /> */}
         </Switch>
