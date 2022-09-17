@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "../nav/NavBar";
 import Paginado from "../paginado/Paginado";
-import Detalle from "../detalle/Detail";
-import Create from "../create/Create";
 import Dogs from "../card/Card";
 import Loading from "../loading/Loading";
 import SearchBar from "../searchBar/SearchBar";
@@ -17,6 +15,7 @@ import {
   orderByPeso,
   getTemps,
   filterDogsByTemperament,
+  getDetail,
 } from "../../redux/actions/index";
 
 export default function Home() {
@@ -133,7 +132,7 @@ export default function Home() {
 
       {currentDogsInPage?.map((p) => {
         return (
-          <Link className={style.link} to={"/detail" + p.id} key={p.id}>
+          <Link className={style.link} to={"/detail/" + p.id} key={p.id}>
             <Dogs
               image={p.image}
               name={p.name}

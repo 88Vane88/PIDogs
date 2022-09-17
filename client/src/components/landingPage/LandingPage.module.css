@@ -11,12 +11,13 @@
 .img {
   background-color: teal;
   width: 100%;
-  font-weight: bold;
+  /*   font-weight: bold; */
   background-image: url("../../img/lindo-perrito-haciendose-pasar-persona-negocios_23-2148985938.jpg");
-  display: grid;
+  /*  display: grid; */
   height: 100vh;
   background-repeat: no-repeat;
-  /*  background-size: cover; */
+
+  /*   background-size: cover; */
 }
 
 .titulo {

@@ -24,6 +24,15 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: action.payload,
       };
+    case "GET_DETAIL":
+      return {
+        ...state,
+        detail: action.payload,
+      };
+    case "POST_DOG":
+      return {
+        ...state,
+      };
     case "FILTER_BY_STATUS":
       const allDogs = state.allDogs;
       const filterStatus =

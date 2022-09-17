@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getDogs } from "../../redux/actions/index";
 import { useDispatch } from "react-redux";
+/* import { Create } from "../create/Create"; */
 
 export default function Nav() {
   const dispatch = useDispatch();
@@ -15,7 +16,14 @@ export default function Nav() {
   return (
     <>
       <div>
-        <Link to="/create">Crear Perro</Link>
+        <button>
+          <Link to="/home">Home</Link>
+        </button>
+      </div>
+      <div>
+        <button>
+          <Link to="/create">Crear Perro</Link>
+        </button>
       </div>
       <div>
         <button
@@ -23,7 +31,6 @@ export default function Nav() {
             handleClick(e);
           }}
         >
-          {" "}
           Volver a cargar
         </button>
       </div>

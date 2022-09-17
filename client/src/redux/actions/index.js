@@ -23,17 +23,39 @@ export function getTemps() {
   };
 }
 
+//Para el create...post:
+export function postDog(payload) {
+  return async function (dispatch) {
+    const respuesta = await axios.post("http://localhost:3001/dogs", payload);
+    return respuesta;
+  };
+}
+
 //Todos los names (searchBar)
 export function getNameDogs(name) {
   return async function (dispatch) {
     try {
-      var dogNames = await axios.get("http://localhost:3001/dogs?name=" + name);
+      var dogNames = await axios.get(`http://localhost:3001/dogs?name=${name}`);
       return dispatch({
         type: "GET_NAME_DOGS",
         payload: dogNames.data,
       });
     } catch (e) {
       console.log(e);
+    }
+  };
+}
+//Detalle por id
+export function getDetail(id) {
+  return async function (dispatch) {
+    try {
+      var dogId = await axios.get(`http://localhost:3001/dogs/${id}`);
+      return dispatch({
+        type: "GET_DETAIL",
+        payload: dogId.data,
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 }
