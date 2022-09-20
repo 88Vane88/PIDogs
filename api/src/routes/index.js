@@ -62,15 +62,25 @@ router.get("/temperaments", async (req, res) => {
 });
 
 router.post("/dogs", async (req, res) => {
-  let { name, height, weight, life_span, image, createdInDb, temperament } =
-    req.body; // lo que me mandan por body
+  let {
+    name,
+    height_min,
+    height_max,
+    weight_min,
+    weight_max,
+    life_span_min,
+    life_span_max,
+    image,
+    createdInDb,
+    temperament,
+  } = req.body; // lo que me mandan por body
 
   let createdDog = await Dog.create({
     //creo el perrito
     name,
-    height,
-    weight,
-    life_span,
+    height: `${height_min} - ${height_max}`,
+    weight: `${weight_min} - ${weight_max}`,
+    life_span: `${life_span_min} - ${life_span_max}`,
     image,
     createdInDb,
   });
