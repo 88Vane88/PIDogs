@@ -27,7 +27,10 @@ export function getTemps() {
 export function postDog(payload) {
   return async function (dispatch) {
     const respuesta = await axios.post("http://localhost:3001/dogs", payload);
-    return respuesta;
+    return dispatch({
+      type: "POST_DOG",
+      payload: respuesta.data,
+    });
   };
 }
 

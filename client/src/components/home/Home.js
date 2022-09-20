@@ -38,9 +38,9 @@ export default function Home() {
 
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [dogsPerPage, setDosPerPage] = useState(dogsInPage);
-  const lastDogInPage = currentPage * dogsPerPage;
-  const firstDogInPage = lastDogInPage - dogsPerPage;
-  const currentDogsInPage = allDogs.slice(firstDogInPage, lastDogInPage);
+  const lastDogInPage = currentPage * dogsPerPage; //1---8----8 te trae 8 perros
+  const firstDogInPage = lastDogInPage - dogsPerPage; //8-----8------0
+  const currentDogsInPage = allDogs.slice(firstDogInPage, lastDogInPage); // corto array y trae 0 a 8
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -81,19 +81,14 @@ export default function Home() {
       <div>
         <h1 className={style.titulo}> RAZAS DE PERROS</h1>
       </div>
-      <div className={style.orden__filtro}>
-        <div className={style.alfabeto}>
-          <select
-            className={style.alfabeto__option}
-            onChange={(e) => handleSortName(e)}
-          >
-            <option value="orden">Orden Alfabetico</option>
-            <option value="asc">A-Z</option>
-            <option value="desc">Z-A</option>
-          </select>
-        </div>
+      <div className={style.ordenamientos}>
+        <select className={style.select} onChange={(e) => handleSortName(e)}>
+          <option value="orden">Orden Alfabetico</option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
+        </select>
         <div className={style.peso} onChange={(e) => handleSortWeight(e)}>
-          <select className={style.peso__option}>
+          <select className={style.select}>
             <option value="peso">Peso</option>
             <option value="maximo">Máximo</option>
             <option value="minimo">Mínimo</option>
@@ -101,7 +96,7 @@ export default function Home() {
         </div>
         <div className={style.temp}>
           <select
-            className={style.temp__option}
+            className={style.select}
             onChange={(e) => handleFilterTemps(e)}
           >
             <option value="todos">Todos</option>
@@ -112,7 +107,7 @@ export default function Home() {
         </div>
         <div className={style.creados}>
           <select
-            className={style.creados__option}
+            className={style.select}
             onChange={(e) => handleFilterStatus(e)}
           >
             <option value="perros">Perros</option>
@@ -122,26 +117,31 @@ export default function Home() {
           </select>
         </div>
       </div>
-      <Paginado
-        className={style.paginado}
-        dogsPerPage={dogsPerPage}
-        allDogs={allDogs.length}
-        paginado={paginado}
-      />
-      <SearchBar className={style.searchbar} />
-
-      {currentDogsInPage?.map((p) => {
-        return (
-          <Link className={style.link} to={"/detail/" + p.id} key={p.id}>
-            <Dogs
-              image={p.image}
-              name={p.name}
-              temperament={p.temperament}
-              weight={p.weight}
-            />
-          </Link>
-        );
-      })}
+      <div className={style.barraPag}>
+        <Paginado
+          className={style.paginado1}
+          dogsPerPage={dogsPerPage}
+          allDogs={allDogs.length}
+          paginado={paginado}
+        />
+      </div>
+      <div className={style.buscaRecarga}>
+        <SearchBar className={style.searchbar} />
+      </div>
+      <div className={style.cards}>
+        {currentDogsInPage?.map((p) => {
+          return (
+            <Link className={style.link} to={"/detail/" + p.id} key={p.id}>
+              <Dogs
+                image={p.image}
+                name={p.name}
+                temperament={p.temperament}
+                weight={p.weight}
+              />
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 

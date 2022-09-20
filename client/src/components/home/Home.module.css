@@ -1,3 +1,57 @@
 .img {
-  background-image: url("../../img/fondoHome.jpg");
+  background-image: url("../../img/home.jpg");
+  background-size: cover;
+}
+.titulo {
+  display: flex;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  color: rgb(25, 26, 26);
+  /*   font-style: oblique; */
+  font-size: 500%;
+  margin-left: 27%;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ordenamientos {
+  display: flex;
+  margin-left: 25%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  gap: 30px;
+}
+
+.select {
+  font-weight: bold;
+  font-size: medium;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.barraPag {
+  margin-left: 20%;
+  margin-bottom: 10px;
+}
+.buscaRecarga {
+  display: flex;
+  margin-left: 40%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  gap: 30px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 3%;
+}
+
+.cards :hover {
+  /* color: rgb(202, 161, 90); */
+  background: rgba(184, 178, 114, 0.585);
 }

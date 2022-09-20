@@ -1,13 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Radio+Canada:wght@500&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-
 .img {
   background-color: teal;
   width: 100%;
@@ -22,10 +15,10 @@
 
 .titulo {
   font-size: 100px;
-  margin-left: 100px;
   font-family: "Bungee", cursive;
   font-style: italic;
   font-variant: small-caps;
+  text-align: center;
 }
 
 .info {

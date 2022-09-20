@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.button {
+  border-radius: 3px;
+  padding: 10px 20px;
+  color: rgba(255, 255, 255);
+  background-color: #3cc93f;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.contenedor {
+  width: 30%;
+  height: 46vw;
+  margin-left: 60%;
+  /*   margin-top: 10px; */
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background: blueviolet;
+  box-shadow: 1vw 1vw 1vw black;
+  border-radius: 1.4vw;
+}
+
+.img {
+  background-image: url("../../img/form2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form {
+  margin-top: -150px;
+  padding: 7vw 0vw;
+}
+
+.form_label {
+  font-style: italic;
+}
+
+.regresar {
+  padding: 10px;
+  background-color: rgb(132, 198, 74);
+  border-radius: 20px;
+  margin-top: 10px;
+  font-size: 15px;
+  color: aliceblue;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.butt__regresar {
+  background-color: antiquewhite;
+  background: linear-gradient(
+    to right,
+    rgba(252, 23, 145, 0.891),
+    rgba(214, 96, 194, 0.445)
+  );
+}
+
+.nombre {
+  text-align: center;
+  margin-top: -40px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+/* .form_input {
+  border-radius: 0.4rem;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #706c6c;
+  padding: 0.6rem 0.3rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--color);
+} */
+
+/* .img {
+  background-image: url("../../img/formulario.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+ width: 100%;
+}
+*/

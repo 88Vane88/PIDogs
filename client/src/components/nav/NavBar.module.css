@@ -1,0 +1,36 @@
+.nav {
+  /*   background-image: url("../../img/nav.jpg"); */
+  /*   float: left; */
+  /*   height: 80px;
+  width: 100%;
+  flex-wrap: wrap;
+  display: inline-block;
+  text-align: center; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  height: 80px;
+}
+
+.home {
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.create {
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.cargar {
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px;
+}

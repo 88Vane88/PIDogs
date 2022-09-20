@@ -41,21 +41,6 @@ export default function Detail(props) {
             </>
           ) : null}
         </div>
-
-        {/*         {myDog.activities
-          ? myDog.activities.map((c) => {
-              return (
-                <>
-                  <div>Activity Name : {c.name}</div>
-                  <div>Activity difficulty : {c.difficulty}</div>
-                  <div>Activity duration : {c.duration}</div>
-                  <div>Activity seasons : {c.seasons}</div>
-                  <div>Activity id : {c.id}</div>
-                </>
-              );
-            })
-          : null}
- */}
         <div className={style.button}>
           <Link className={style.buttonReg} to="/home">
             <button>Regresar</button>

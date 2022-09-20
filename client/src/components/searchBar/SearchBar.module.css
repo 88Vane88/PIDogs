@@ -1,0 +1,17 @@
+.input {
+  font-weight: bold;
+  font-size: medium;
+  border-radius: 10px;
+  right: 10%;
+  top: 30%;
+  padding: 3px;
+}
+
+.button {
+  font-weight: bold;
+  font-size: medium;
+  border-radius: 10px;
+  right: 10%;
+  top: 30%;
+  padding: 3px;
+}
