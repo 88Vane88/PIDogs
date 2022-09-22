@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import style from "../home/Home.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -131,14 +131,14 @@ export default function Home() {
       <div className={style.cards}>
         {currentDogsInPage?.map((p) => {
           return (
-            <Link className={style.link} to={"/detail/" + p.id} key={p.id}>
-              <Dogs
-                image={p.image}
-                name={p.name}
-                temperament={p.temperament}
-                weight={p.weight}
-              />
-            </Link>
+            <Dogs
+              image={p.image}
+              name={p.name}
+              temperament={p.createdInDb ? p.temperamentos : p.temperament}
+              weight={p.weight}
+              createdInDb={p.createdInDb}
+              id={p.id}
+            />
           );
         })}
       </div>

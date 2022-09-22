@@ -19,12 +19,16 @@ export default function Nav() {
       <div className={style.nav}>
         <div>
           <button className={style.home}>
-            <Link to="/home">Home</Link>
+            <Link className={style.link} to="/home">
+              Home
+            </Link>
           </button>
         </div>
         <div>
           <button className={style.create}>
-            <Link to="/create">Crear Perro</Link>
+            <Link className={style.link} to="/create">
+              Crear Perro
+            </Link>
           </button>
         </div>
         <div>

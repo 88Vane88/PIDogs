@@ -1,6 +1,6 @@
 .global {
   border: rgba(0, 0, 0, 0.644) solid 2px;
-  background-color: rgba(209, 184, 124, 0.629);
+  background-color: rgba(212, 158, 32, 0.745);
   border-radius: 10px;
   align-items: center;
   flex-direction: row;
@@ -16,6 +16,8 @@
 .img {
   width: 200px;
   height: 150px;
+  border-style: solid;
+  border-width: 2px;
 }
 .info {
   text-align: center;

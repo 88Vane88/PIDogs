@@ -1,24 +1,33 @@
-.global {
-  /*   background-color: aliceblue; */
-  /* display: grid; */
-  width: 40%;
-  /* height: 100%; */
-  margin-left: 30%;
-  align-items: center;
-  border-radius: 1.4vw;
-  box-shadow: 1vw 1vw 1vw black;
-  margin-top: 5%;
-  background-image: url("../../img/nav.jpg");
-}
-
 .img {
   background-repeat: no-repeat;
-  /*   background-size: cover;
-  margin-bottom: 10px; */
+  background-image: url("../../img/hermoso-retrato-mascota-perro_23-2149218452.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.global {
+  position: absolute;
+  width: 35%;
+  height: 25vw;
+  margin-left: 10%;
+  margin-top: 10%;
+  /*   display: grid; */
+  align-items: center;
+  background: rgba(212, 158, 32, 0.745);
+  box-shadow: 1vw 1vw 1vw black;
+  border-radius: 1.4vw;
+  padding: 10px;
+  /*   border-style: solid;
+  border-width: 2px; */
 }
 
 .perro {
   width: 200px;
   height: 150px;
   border-radius: 10%;
+  border-style: solid;
+  border-width: 2px;
 }

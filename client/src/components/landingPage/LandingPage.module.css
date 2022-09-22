@@ -4,48 +4,59 @@
 .img {
   background-color: teal;
   width: 100%;
-  /*   font-weight: bold; */
-  background-image: url("../../img/lindo-perrito-haciendose-pasar-persona-negocios_23-2148985938.jpg");
+  background-image: url("../../img/200932.jpg");
   /*  display: grid; */
   height: 100vh;
   background-repeat: no-repeat;
-
-  /*   background-size: cover; */
+  background-size: cover;
+  background-position: center;
 }
 
 .titulo {
-  font-size: 100px;
-  font-family: "Bungee", cursive;
-  font-style: italic;
-  font-variant: small-caps;
-  text-align: center;
+  color: rgba(152, 40, 129, 0.913);
+  /*   color:transparent; */
+  -moz-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 2px;
+  /*   -moz-text-stroke-color: #91babd; */
+  -webkit-text-stroke-color: #ffffff;
+  text-shadow: 7px 7px #ce31a7;
+  font-size: 150px;
+  margin-left: 15%;
 }
 
 .info {
-  margin-right: 60px;
-  /*   margin-top: 20px; */
   font-family: "Radio Canada", sans-serif;
-  text-align: right;
-  font-size: 25px;
+  margin-left: 15%;
+  margin-top: 50px;
+  font-size: 28px;
+  font-style: italic;
 }
 
 .button {
-  font-size: 16px;
+  font-size: 25px;
   font-weight: bold;
   border-radius: 50px;
-  /*  background-color: rgb(227, 163, 26); */
   background: linear-gradient(
     to right,
-    rgba(255, 191, 0, 0.732),
-    rgba(255, 166, 0, 0.913)
+    rgba(219, 17, 169, 0.959),
+    rgba(152, 40, 129, 0.913)
   );
   color: white;
   cursor: pointer;
-  box-shadow: 1px 1px 30px -12px rgba(255, 166, 0, 0.913);
   transition: all 300ms;
   position: absolute;
   right: 100px;
   top: 80%;
   border: none;
-  padding: 18px 80px;
+  padding: 18px 70px;
+  font-variant: small-caps;
+}
+.button:hover {
+  background: #31e021;
+  background-image: -webkit-linear-gradient(top, #31e021, #4ca84c);
+  background-image: -moz-linear-gradient(top, #31e021, #4ca84c);
+  background-image: -ms-linear-gradient(top, #31e021, #4ca84c);
+  background-image: -o-linear-gradient(top, #31e021, #4ca84c);
+  background-image: linear-gradient(to bottom, #31e021, #4ca84c);
+  text-decoration: none;
 }

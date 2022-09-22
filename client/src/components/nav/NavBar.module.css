@@ -1,15 +1,12 @@
 .nav {
-  /*   background-image: url("../../img/nav.jpg"); */
   /*   float: left; */
   /*   height: 80px;
   width: 100%;
-  flex-wrap: wrap;
   display: inline-block;
   text-align: center; */
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  height: 80px;
 }
 
 .home {
@@ -19,6 +16,12 @@
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
 }
 
 .create {
@@ -26,6 +29,7 @@
   font-weight: bold;
   border-radius: 10px;
   padding: 10px;
+  margin-top: 10px;
 }
 
 .cargar {
@@ -33,4 +37,5 @@
   font-weight: bold;
   border-radius: 10px;
   padding: 10px;
+  margin-top: 10px;
 }

@@ -1,15 +1,15 @@
 .img {
-  background-image: url("../../img/home.jpg");
+  background-image: url("../../img/home5.jpg");
   background-size: cover;
 }
 .titulo {
-  display: flex;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: bold;
-  color: rgb(25, 26, 26);
-  /*   font-style: oblique; */
-  font-size: 500%;
-  margin-left: 27%;
+  color: rgba(152, 40, 129, 0.913);
+  -moz-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #ffffff;
+  text-shadow: 7px 7px #ce31a7;
+  font-size: 90px;
+  text-align: center;
 }
 
 .link {
@@ -35,6 +35,11 @@
 .barraPag {
   margin-left: 20%;
   margin-bottom: 10px;
+}
+
+.paginado1 {
+  display: flex;
+  gap: 20px;
 }
 .buscaRecarga {
   display: flex;

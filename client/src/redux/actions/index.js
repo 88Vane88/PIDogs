@@ -1,7 +1,7 @@
 import axios from "axios";
 /* ACA ESTA TODA LA CONEXION BACK Y FRONT!! */
 
-//Todos los perros
+//DOGS
 export function getDogs() {
   return async function (dispatch) {
     var pedidoApi = await axios.get("http://localhost:3001/dogs");
@@ -12,7 +12,7 @@ export function getDogs() {
   };
 }
 
-//Todos los temperamentos:
+//TEMPS
 export function getTemps() {
   return async function (dispatch) {
     var pedidoTemps = await axios.get("http://localhost:3001/temperaments");
@@ -23,7 +23,7 @@ export function getTemps() {
   };
 }
 
-//Para el create...post:
+//POST - FORMULARIO
 export function postDog(payload) {
   return async function (dispatch) {
     const respuesta = await axios.post("http://localhost:3001/dogs", payload);
@@ -34,7 +34,7 @@ export function postDog(payload) {
   };
 }
 
-//Todos los names (searchBar)
+//SEARCHBAR
 export function getNameDogs(name) {
   return async function (dispatch) {
     try {
@@ -48,7 +48,7 @@ export function getNameDogs(name) {
     }
   };
 }
-//Detalle por id
+//DETAIL
 export function getDetail(id) {
   return async function (dispatch) {
     try {
@@ -56,6 +56,21 @@ export function getDetail(id) {
       return dispatch({
         type: "GET_DETAIL",
         payload: dogId.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+//BORRAR
+export function borrar(id) {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`http://localhost:3001/delete/${id}`);
+      return dispatch({
+        type: "DELETE",
+        payload: id,
       });
     } catch (error) {
       console.log(error);

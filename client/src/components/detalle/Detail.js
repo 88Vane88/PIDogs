@@ -28,9 +28,12 @@ export default function Detail(props) {
                 alt={myDog[0].name}
               />
               <div className={style.info}>
-                <div className={style.name}>Nombre : {myDog[0].name}</div>
+                <div className={style.name}>Nombre: {myDog[0].name}</div>
                 <div className={style.temp}>
-                  Temperamento: {myDog[0].temperament}
+                  Temperamento:{"   "}
+                  {!myDog[0].createdInDb //mi dog es de la api?
+                    ? myDog[0].temperament + " "
+                    : myDog[0].temperamentos.map((t) => t.temperament + " , ")}
                 </div>
                 <div className={style.height}>Altura: {myDog[0].height} cm</div>
                 <div className={style.weight}>Peso: {myDog[0].weight} kg</div>

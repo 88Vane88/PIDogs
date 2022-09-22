@@ -33,6 +33,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case "DELETE":
+      return {
+        ...state,
+        dogs: state.dogs.filter((d) => d.id !== action.payload),
+      };
+
     case "FILTER_BY_STATUS":
       const allDogs = state.allDogs;
       const filterStatus =
