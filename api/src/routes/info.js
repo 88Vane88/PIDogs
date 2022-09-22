@@ -1,4 +1,3 @@
-const { Router } = require("express");
 const axios = require("axios");
 const { Dog, Temperamento, Dog_Temp } = require("../db.js");
 
@@ -13,6 +12,7 @@ const apiInfo = async () => {
       life_span: p.life_span,
       image: p.image.url,
       temperament: p.temperament,
+      createdInDb: false,
     };
   });
   return solicitado;

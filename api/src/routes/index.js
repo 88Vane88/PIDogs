@@ -15,50 +15,76 @@ const router = Router();
 //se puede hacer ruta de put y delete para borrar y cambiar cosas en el front..cuando creo dogs
 router.get("/dogs/:id", async (req, res) => {
   const { id } = req.params;
-  const allDogs = await getAll();
 
-  if (id) {
-    let dogsId = await allDogs.filter((d) => d.id == id);
-    dogsId.length
-      ? res.status(200).json(dogsId)
-      : res.status(404).send("No está ese perro");
+  try {
+    const allDogs = await getAll();
+
+    if (id) {
+      let dogsId = await allDogs.filter((d) => d.id == id);
+      dogsId.length
+        ? res.status(200).json(dogsId)
+        : res.status(404).send("No está ese perro");
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
 router.get("/dogs", async (req, res) => {
   // ---/dogs y /dogs?name=........
   const { name } = req.query;
-  let allDogs = await getAll();
+  try {
+    let allDogs = await getAll();
 
-  if (name) {
-    //si recibo name por query
-    let dogName = await allDogs.filter((d) =>
-      d.name.toLowerCase().includes(name.toLowerCase())
-    );
-    dogName.length
-      ? res.status(200).send(dogName)
-      : res.status(404).send("No existe el perro");
-  } else {
-    // si no recibo nada por query
-    res.status(200).send(allDogs);
+    if (name) {
+      //si recibo name por query
+      let dogName = await allDogs.filter((d) =>
+        d.name.toLowerCase().includes(name.toLowerCase())
+      );
+      dogName.length
+        ? res.status(200).send(dogName)
+        : res.status(404).send("No existe el perro");
+    } else {
+      // si no recibo nada por query
+      res.status(200).send(allDogs);
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
 router.get("/temperaments", async (req, res) => {
-  const tempApi = await axios.get("https://api.thedogapi.com/v1/breeds"); //entro a api
-  const cadaTemp = tempApi.data //hago un map de cada p y los separo por ,
-    .map((d) => d.temperament)
-    .toString()
-    .split(",");
-  const filtrado = cadaTemp.filter((e) => e); // hago filtrado de ese map
-  const cadaFiltrado = [...new Set(filtrado)];
-  cadaFiltrado.forEach((t) => {
-    Temperamento.findOrCreate({
-      where: { temperament: t },
+  try {
+    const tempApi = await axios.get("https://api.thedogapi.com/v1/breeds"); //entro a api
+    const cadaTemp = tempApi.data //hago un map de cada t y los separo por ,
+      .map((d) => d.temperament)
+      .toString()
+      .split(",");
+    const filtrado = cadaTemp.filter((e) => e); // hago filtrado de ese map
+    const cadaFiltrado = [...new Set(filtrado)];
+
+    cadaFiltrado.forEach((t) => {
+      Temperamento.findOrCreate({
+        where: { temperament: t },
+      });
     });
-  });
-  const allTemps = await Temperamento.findAll();
-  res.send(allTemps);
+    const allTemps = await Temperamento.findAll();
+    res.send(allTemps);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Dog.destroy({ where: { id } });
+    const newDelete = await getAll();
+    res.send(newDelete);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router.post("/dogs", async (req, res) => {
@@ -75,54 +101,28 @@ router.post("/dogs", async (req, res) => {
     temperament,
   } = req.body; // lo que me mandan por body
 
-  let createdDog = await Dog.create({
-    //creo el perrito
-    name,
-    height: `${height_min} - ${height_max}`,
-    weight: `${weight_min} - ${weight_max}`,
-    life_span: `${life_span_min} - ${life_span_max}`,
-    image,
-    createdInDb,
-  });
-
-  let tempDb = await Temperamento.findAll({
-    //me lo traigo a los temps de los models
-    where: { temperament: temperament },
-  });
-  createdDog.addTemperamento(tempDb); //uno perros con temps
-  res.send("Perro creado");
-});
-
-/* 
-router.get("/temperaments", async (req, res) => {
   try {
-    let api = await axios.get("https://api.thedogapi.com/v1/breeds");
-    let onlyTemperaments = [];
-    api.data.forEach((i) =>
-      typeof i.temperament === "string"
-        ? onlyTemperaments.push(...i.temperament.split(","))
-        : i.temperament
-    );
-    let temperaments = [];
-    let verificacion = {};
-    onlyTemperaments.forEach(async (i) => {
-      if (!verificacion[i]) {
-        verificacion[i] = true;
-        temperaments.push(i);
-      }
+    let createdDog = await Dog.create({
+      //creo el perrito
+      name,
+      height: `${height_min} - ${height_max}`,
+      weight: `${weight_min} - ${weight_max}`,
+      life_span: `${life_span_min} - ${life_span_max}`,
+      image,
+      createdInDb,
     });
-    temperaments.forEach((i) => {
-      Temperamento.findOrCreate({
-        where: { temperament: i },
-      });
+
+    let tempDb = await Temperamento.findAll({
+      //me lo traigo a los temps de los models
+      where: { temperament: temperament },
     });
-    let prueba = await Temperamento.findAll();
-    res.status(200).send(prueba);
+    createdDog.addTemperamento(tempDb); //uno perros con temps
+    res.send("Perro creado");
   } catch (error) {
-    res.status(400).send({ message: error.message });
+    console.log(error);
   }
 });
- */
+
 module.exports = router;
 
 /* 
