@@ -61,7 +61,7 @@ router.get("/temperaments", async (req, res) => {
       .toString()
       .split(",");
     const filtrado = cadaTemp.filter((e) => e); // hago filtrado de ese map
-    const cadaFiltrado = [...new Set(filtrado)];
+    const cadaFiltrado = [...new Set(filtrado)]; //para que no se repitan
 
     cadaFiltrado.forEach((t) => {
       Temperamento.findOrCreate({
@@ -75,18 +75,20 @@ router.get("/temperaments", async (req, res) => {
   }
 });
 
+//DELETE DOG
 router.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    await Dog.destroy({ where: { id } });
-    const newDelete = await getAll();
+    await Dog.destroy({ where: { id } }); //en la tabla del dog, borrame id
+    const newDelete = await getAll(); //devolvemelo sin ese id
     res.send(newDelete);
   } catch (error) {
     console.log(error);
   }
 });
 
+//POST
 router.post("/dogs", async (req, res) => {
   let {
     name,

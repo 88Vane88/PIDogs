@@ -1,6 +1,17 @@
+/* siempre para fondo cover:
+  background-size: cover;
+  position: absolute;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%; */
+
 .img {
   background-image: url("../../img/home5.jpg");
   background-size: cover;
+  position: absolute;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
 }
 .titulo {
   color: rgba(152, 40, 129, 0.913);
@@ -54,9 +65,4 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-left: 3%;
-}
-
-.cards :hover {
-  /* color: rgb(202, 161, 90); */
-  background: rgba(184, 178, 114, 0.585);
 }

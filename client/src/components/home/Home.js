@@ -99,7 +99,7 @@ export default function Home() {
             className={style.select}
             onChange={(e) => handleFilterTemps(e)}
           >
-            <option value="todos">Todos</option>
+            <option value="todos">Temperamentos</option>
             {allTemps?.map((t) => (
               <option>{t.temperament}</option>
             ))}
@@ -110,9 +110,7 @@ export default function Home() {
             className={style.select}
             onChange={(e) => handleFilterStatus(e)}
           >
-            <option value="perros">Perros</option>
             <option value="todos">Todos</option>
-            <option value="exist">Existentes</option>
             <option value="creados">Creados</option>
           </select>
         </div>
@@ -132,6 +130,7 @@ export default function Home() {
         {currentDogsInPage?.map((p) => {
           return (
             <Dogs
+              loading="lazy"
               image={p.image}
               name={p.name}
               temperament={p.createdInDb ? p.temperamentos : p.temperament}

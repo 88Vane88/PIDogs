@@ -13,7 +13,7 @@
 .contenedor {
   margin-top: -30px;
   width: 30%;
-  height: 100%;
+  height: auto;
   margin-left: 60%;
   display: grid;
   justify-content: center;
@@ -27,7 +27,11 @@
   background-image: url("../../img/form2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-size: cover;
+  position: absolute;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
 }
 
 .form {
@@ -66,24 +70,7 @@
   letter-spacing: 2px;
 }
 
-/* .form_input {
-  border-radius: 0.4rem;
-  width: 100%;
-  font-family: inherit;
-  font-size: 1rem;
-  color: #706c6c;
-  padding: 0.6rem 0.3rem;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid var(--color);
-} */
-
-/* .img {
-  background-image: url("../../img/formulario.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100vh;
- width: 100%;
+.error {
+  color: red;
+  font-size: small;
 }
-*/

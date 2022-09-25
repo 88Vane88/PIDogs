@@ -28,7 +28,7 @@ export default function Detail(props) {
                 alt={myDog[0].name}
               />
               <div className={style.info}>
-                <div className={style.name}>Nombre: {myDog[0].name}</div>
+                <div className={style.name}>{myDog[0].name}</div>
                 <div className={style.temp}>
                   Temperamento:{"   "}
                   {!myDog[0].createdInDb //mi dog es de la api?
@@ -42,11 +42,14 @@ export default function Detail(props) {
                 </div>
               </div>
             </>
-          ) : null}
+          ) : (
+            <h2>Loading</h2>
+          )}
+          {/* MIRAR!!! */}
         </div>
         <div className={style.button}>
-          <Link className={style.buttonReg} to="/home">
-            <button>Regresar</button>
+          <Link to="/home">
+            <button className={style.buttonReg}>Regresar</button>
           </Link>
         </div>
       </div>

@@ -12,7 +12,7 @@ const apiInfo = async () => {
       life_span: p.life_span,
       image: p.image.url,
       temperament: p.temperament,
-      createdInDb: false,
+      createdInDb: false, //para la card
     };
   });
   return solicitado;

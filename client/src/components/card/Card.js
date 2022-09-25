@@ -1,6 +1,6 @@
 import React from "react";
 import style from "../card/Card.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { borrar } from "../../redux/actions";
 import { Link } from "react-router-dom";
 
@@ -9,16 +9,10 @@ export default function Dogs({
   name,
   temperament,
   weight,
-  createdInDb,
-  id,
+  createdInDb, //para que me traiga temp del formulario
+  id, //para borrar perro creado por id
 }) {
-  /* function handleDelete(t) {
-    setForm({
-      ...form,
-      temperament: form.temperament.filter((tem) => tem !== t),
-    });
-  } */
-
+  const cards = useSelector((state) => state.dogs);
   const dispatch = useDispatch();
 
   function borrandoDb() {
@@ -28,31 +22,39 @@ export default function Dogs({
   return (
     <div className={style.global}>
       <div>
-        <Link className={style.link} to={"/detail/" + id} key={id}>
-          <img
-            className={style.img}
-            src={image}
-            alt="img not found"
-            width="200px"
-            height="250px"
-          />
-        </Link>
-      </div>
-      <div className={style.info}>
-        <div>
-          <h2>{name}</h2>
-        </div>
-        <div className={style.temps}>
-          <h3>
-            Temperamento:
-            {!createdInDb
-              ? temperament
-              : temperament.map((t) => t.temperament + ",")}
-          </h3>
-        </div>
-        <div className={style.peso}>
-          <h4>Peso: {weight} kg</h4>
-        </div>
+        {cards.length > 0 ? (
+          <>
+            <Link className={style.link} to={"/detail/" + id} key={id}>
+              <img
+                className={style.img}
+                src={image}
+                alt="img not found"
+                width="200px"
+                height="250px"
+              />
+            </Link>
+            <div className={style.info}>
+              <div>
+                <h2 className={style.name}>{name}</h2>
+              </div>
+              <br />
+              <div className={style.temp}>
+                <h3>
+                  Temperamento:
+                  {!createdInDb
+                    ? temperament
+                    : temperament.map((t) => t.temperament + ",")}
+                </h3>
+              </div>
+              <br />
+              <div className={style.weight}>
+                <h4>Peso: {weight} kg</h4>
+              </div>
+            </div>
+          </>
+        ) : (
+          <h2>Loading</h2>
+        )}
         <div>
           {createdInDb ? <button onClick={() => borrandoDb()}>x</button> : null}
         </div>
@@ -61,4 +63,4 @@ export default function Dogs({
   );
 }
 
-/* img, nombre, temp, weigth */
+/* img={}, name={}, temperament={}, weigth={} */
