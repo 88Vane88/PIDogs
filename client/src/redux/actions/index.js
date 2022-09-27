@@ -1,7 +1,7 @@
 import axios from "axios";
 /* ACA ESTA TODA LA CONEXION BACK Y FRONT!! */
 
-//DOGS
+//----------------------DOGS--------------------------
 export function getDogs() {
   return async function (dispatch) {
     var pedidoApi = await axios.get("http://localhost:3001/dogs");
@@ -12,7 +12,7 @@ export function getDogs() {
   };
 }
 
-//TEMPS
+//------------------------TEMPS--------------------
 export function getTemps() {
   return async function (dispatch) {
     var pedidoTemps = await axios.get("http://localhost:3001/temperaments");
@@ -23,7 +23,7 @@ export function getTemps() {
   };
 }
 
-//POST - FORMULARIO
+//-------------------POST - FORMULARIO---------------------
 export function postDog(payload) {
   return async function (dispatch) {
     const respuesta = await axios.post("http://localhost:3001/dogs", payload);
@@ -34,7 +34,7 @@ export function postDog(payload) {
   };
 }
 
-//SEARCHBAR
+//-------------------------SEARCHBAR-------------------------
 export function getNameDogs(name) {
   return async function (dispatch) {
     try {
@@ -48,7 +48,7 @@ export function getNameDogs(name) {
     }
   };
 }
-//DETAIL
+//---------------------------DETAIL-------------------------
 export function getDetail(id) {
   return async function (dispatch) {
     try {
@@ -63,7 +63,7 @@ export function getDetail(id) {
   };
 }
 
-//BORRAR
+//-----------------------------BORRAR------------------------
 export function borrar(id) {
   return async function (dispatch) {
     try {
@@ -78,6 +78,15 @@ export function borrar(id) {
   };
 }
 
+//-------------------VACIAR DETALLE------------------------
+export function vaciar() {
+  return {
+    type: "VACIAR_DETAIL",
+    payload: [],
+  };
+}
+
+//--------------------------FILTER ----------------------
 export function filterDogsByStatus(payload) {
   return {
     type: "FILTER_BY_STATUS",
@@ -92,6 +101,7 @@ export function filterDogsByTemperament(payload) {
   };
 }
 
+//--------------------------------- ORDENAR ----------------------------
 export function orderByName(payload) {
   return {
     type: "ORDER_BY_NAME",

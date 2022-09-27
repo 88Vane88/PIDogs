@@ -130,7 +130,7 @@ export default function Home() {
         {currentDogsInPage?.map((p) => {
           return (
             <Dogs
-              loading="lazy"
+              key={p.id}
               image={p.image}
               name={p.name}
               temperament={p.createdInDb ? p.temperamentos : p.temperament}

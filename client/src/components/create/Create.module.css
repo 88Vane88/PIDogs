@@ -17,7 +17,7 @@
   margin-left: 60%;
   display: grid;
   justify-content: center;
-  background: blueviolet;
+  background: rgba(171, 138, 202, 0.883);
   box-shadow: 1vw 1vw 1vw black;
   border-radius: 1.4vw;
   padding: 15px;
@@ -73,4 +73,5 @@
 .error {
   color: red;
   font-size: small;
+  font-style: italic;
 }

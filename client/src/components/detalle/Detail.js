@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../../redux/actions/index";
 import { useEffect } from "react";
 import style from "../detalle/Detail.module.css";
+import { vaciar } from "../../redux/actions";
 
 export default function Detail(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
+    dispatch(vaciar());
   }, []);
 
   const myDog = useSelector((state) => state.detail);

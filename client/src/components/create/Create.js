@@ -17,7 +17,7 @@ export default function CreatedDog() {
   const temps = useSelector((state) => state.temps); //traido temps de reduce
   const history = useHistory();
   const [errores, setErrores] = useState({}); //seteo nuevo estado para errores
-  /*  const [errorButton, setErrorButton] = useState(true); */
+  const [errorButton, setErrorButton] = useState(false);
 
   //gurado form y seteo nuevo estado
   const [form, setForm] = useState({
@@ -74,41 +74,62 @@ export default function CreatedDog() {
   }
 
   //----------------------VALIDACIONES--------------------------------
-  const soloLetras = /^[a-zA-ZñÑáÁéÉíÍóÓuÚ]*$/;
-  const soloNumeros = /^[0-9]*$/;
-
   function validar(form) {
     let errores = {};
+    let soloLetras = /^[A-Za-zñÑáÁéÉíÍóÓuÚ\s]+$/;
+    let soloNumeros = /^[0-9]*$/;
+    //ejemplo para comentario o descripcion: /^.{1,255}$/
+    //ejemplo para mail: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/
 
-    if (!form.name) errores.name = "Campo requerido";
-    if (!soloLetras.test(form.name)) errores.name = "Ingresar solo letras";
+    if (!form.name) {
+      errores.name = "Campo requerido";
+    } else if (!soloLetras.test(form.name)) {
+      errores.name = "El campo solo acepta letras y espacios en blanco";
+    }
 
-    if (!form.height_max) errores.height_max = "Campo requerido";
-    if (!soloNumeros.test(form.height_max))
+    if (!form.height_max) {
+      errores.height_max = "Campo requerido";
+    } else if (!soloNumeros.test(form.height_max)) {
       errores.height_max = "Ingresar solo números";
-    if (!form.height_min) errores.height_min = "Campo requerido";
-    if (!soloNumeros.test(form.height_min))
+    }
+
+    if (!form.height_min) {
+      errores.height_min = "Campo requerido";
+    } else if (!soloNumeros.test(form.height_min)) {
       errores.height_min = "Ingresar solo números";
+    }
 
-    if (!form.weight_max) errores.weight_max = "Campo requerido";
-    if (!soloNumeros.test(form.weight_max))
+    if (!form.weight_max) {
+      errores.weight_max = "Campo requerido";
+    } else if (!soloNumeros.test(form.weight_max)) {
       errores.weight_max = "Ingresar solo números";
-    if (!form.weight_min) errores.weight_min = "Campo requerido";
-    if (!soloNumeros.test(form.weight_min))
+    }
+
+    if (!form.weight_min) {
+      errores.weight_min = "Campo requerido";
+    } else if (!soloNumeros.test(form.weight_min)) {
       errores.weight_min = "Ingresar solo números";
+    }
 
-    if (!form.life_span_min) errores.life_span_min = "Campo requerido";
-    if (!soloNumeros.test(form.life_span_min))
+    if (!form.life_span_min) {
+      errores.life_span_min = "Campo requerido";
+    } else if (!soloNumeros.test(form.life_span_min)) {
       errores.life_span_min = "Ingresar solo números";
-    if (!form.life_span_max) errores.life_span_max = "Campo requerido";
-    if (!soloNumeros.test(form.life_span_max))
-      errores.life_span_max = "Ingresar solo números";
+    }
 
-    if (!form.temperament)
+    if (!form.life_span_max) {
+      errores.life_span_max = "Campo requerido";
+    } else if (!soloNumeros.test(form.life_span_max)) {
+      errores.life_span_max = "Ingresar solo números";
+    }
+
+    if (!form.temperament) {
       errores.temperament = "Seleccionar al menos un temperamento";
+    }
 
     return errores;
   }
+
   //------------------DELETE---------------------------------
   function handleDelete(t) {
     setForm({
@@ -116,6 +137,15 @@ export default function CreatedDog() {
       temperament: form.temperament.filter((tem) => tem !== t),
     });
   }
+
+  //--------------------- BUTTON----------------
+  /*   useEffect(() => {
+    if (!errores.name && !errores.height_min && !errores.height_max && !errores.weight_min && !errores.weight_max && !errores.life_span_min && !errores.life_span_max.length > 0) {
+    document.querySelector (`#button`).disabled=false
+    } else {
+    document.querySelector (`#button`).disabled=true
+  },[]
+} */
 
   /* si tuviera un checkbox...sería:
   function handleCheck(e){if(e.target.checked){setForm({...input, status:e.target.value})}}
@@ -269,7 +299,9 @@ export default function CreatedDog() {
                 <label className={style.form_label}>Temperamento: </label>
                 <select onChange={(e) => handleSelect(e)}>
                   {temps.map((t) => (
-                    <option value={t.temperament}>{t.temperament}</option>
+                    <option value={t.temperament} key={t.id}>
+                      {t.temperament}
+                    </option>
                   ))}
                 </select>
                 {errores.temperament ? (
@@ -282,7 +314,8 @@ export default function CreatedDog() {
               <button
                 type="submit"
                 className={style.button}
-                /* disabled={errorButton ? true : false} */
+                /*  disabled={!errorButton}
+                onClick={handleButton} */
               >
                 Crear Perro
               </button>
