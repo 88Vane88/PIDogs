@@ -1,0 +1,40 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0c1b21;
+}
+
+.custom {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.balls {
+  display: flex;
+  font-size: 20px;
+}
+
+.ball {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  margin-left: 10px;
+  animation: ball 0.5s ease infinite alternate;
+}
+@keyframes ball {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+.customText {
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+}

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Nav from "../nav/NavBar";
 import Paginado from "../paginado/Paginado";
 import Dogs from "../card/Card";
-import Loading from "../loading/Loading";
+import LoadingHome from "../loadingHome/LoadingHome";
 import SearchBar from "../searchBar/SearchBar";
 import {
   getDogs,
@@ -73,79 +73,90 @@ export default function Home() {
     setCurrentPage(1);
     setOrdWeight(`Ordenando ${e.target.value}`);
   }
+
   return (
     <div className={style.img}>
-      <div className={style.nav}>
-        <Nav />
-      </div>
       <div>
-        <h1 className={style.titulo}> RAZAS DE PERROS</h1>
-      </div>
-      <div className={style.ordenamientos}>
-        <select className={style.select} onChange={(e) => handleSortName(e)}>
-          <option value="orden">Orden Alfabetico</option>
-          <option value="asc">A-Z</option>
-          <option value="desc">Z-A</option>
-        </select>
-        <div className={style.peso} onChange={(e) => handleSortWeight(e)}>
-          <select className={style.select}>
-            <option value="peso">Peso</option>
-            <option value="maximo">Máximo</option>
-            <option value="minimo">Mínimo</option>
-          </select>
-        </div>
-        <div className={style.temp}>
-          <select
-            className={style.select}
-            onChange={(e) => handleFilterTemps(e)}
-          >
-            <option value="todos">Temperamentos</option>
-            {allTemps?.map((t) => (
-              <option>{t.temperament}</option>
-            ))}
-          </select>
-        </div>
-        <div className={style.creados}>
-          <select
-            className={style.select}
-            onChange={(e) => handleFilterStatus(e)}
-          >
-            <option value="todos">Todos</option>
-            <option value="creados">Creados</option>
-          </select>
-        </div>
-      </div>
-      <div className={style.barraPag}>
-        <Paginado
-          className={style.paginado1}
-          dogsPerPage={dogsPerPage}
-          allDogs={allDogs.length}
-          paginado={paginado}
-        />
-      </div>
-      <div className={style.buscaRecarga}>
-        <SearchBar className={style.searchbar} />
-      </div>
-      <div className={style.cards}>
-        {currentDogsInPage?.map((p) => {
-          return (
-            <Dogs
-              key={p.id}
-              image={p.image}
-              name={p.name}
-              temperament={p.createdInDb ? p.temperamentos : p.temperament}
-              weight={p.weight}
-              createdInDb={p.createdInDb}
-              id={p.id}
-            />
-          );
-        })}
+        {allDogs.length > 0 ? (
+          <>
+            <div className={style.nav}>
+              <Nav />
+            </div>
+            <div>
+              <h1 className={style.titulo}> RAZAS DE PERROS</h1>
+            </div>
+            <div className={style.ordenamientos}>
+              <select
+                className={style.select}
+                onChange={(e) => handleSortName(e)}
+              >
+                <option value="orden">Orden Alfabetico</option>
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+              </select>
+              <div className={style.peso} onChange={(e) => handleSortWeight(e)}>
+                <select className={style.select}>
+                  <option value="peso">Peso</option>
+                  <option value="maximo">Máximo</option>
+                  <option value="minimo">Mínimo</option>
+                </select>
+              </div>
+              <div className={style.temp}>
+                <select
+                  className={style.select}
+                  onChange={(e) => handleFilterTemps(e)}
+                >
+                  <option value="todos">Temperamentos</option>
+                  {allTemps?.map((t) => (
+                    <option>{t.temperament}</option>
+                  ))}
+                </select>
+              </div>
+              <div className={style.creados}>
+                <select
+                  className={style.select}
+                  onChange={(e) => handleFilterStatus(e)}
+                >
+                  <option value="todos">Todos</option>
+                  <option value="creados">Creados</option>
+                </select>
+              </div>
+            </div>
+            <div className={style.barraPag}>
+              <Paginado
+                className={style.paginado1}
+                dogsPerPage={dogsPerPage}
+                allDogs={allDogs.length}
+                paginado={paginado}
+              />
+            </div>
+            <div className={style.buscaRecarga}>
+              <SearchBar className={style.searchbar} />
+            </div>
+            <div className={style.cards}>
+              {currentDogsInPage?.map((p) => {
+                return (
+                  <Dogs
+                    key={p.id}
+                    image={p.image}
+                    name={p.name}
+                    temperament={
+                      p.createdInDb ? p.temperamentos : p.temperament
+                    }
+                    weight={p.weight}
+                    createdInDb={p.createdInDb}
+                    id={p.id}
+                  />
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <LoadingHome />
+        )}
       </div>
     </div>
   );
-
-  /* al final poner:
-    {isLoading && <loading />} */
 }
 
 /* 
