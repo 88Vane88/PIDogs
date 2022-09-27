@@ -78,7 +78,6 @@ router.get("/temperaments", async (req, res) => {
 //DELETE DOG
 router.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
-
   try {
     await Dog.destroy({ where: { id } }); //en la tabla del dog, borrame id
     const newDelete = await getAll(); //devolvemelo sin ese id
@@ -133,4 +132,26 @@ module.exports = router;
 [ ] GET /dogs/{idRaza} -----params
 [ ] POST /dogs---------body
 [ ] GET /temperaments  ----------query
+*/
+
+/* 
+/* router.put("/update/id", async (req, res) => {
+  const { id } = req.body;
+  try {
+    await Dog.update(
+      {
+        name: "nuevoPrueba",
+      },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+    const newUpdate = await Dog.findById(id);
+    res.send(newUpdate);
+  } catch (error) {
+    console.log(error);
+  }
+});
 */

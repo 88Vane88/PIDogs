@@ -8,7 +8,7 @@ const apiInfo = async () => {
       id: p.id,
       name: p.name,
       height: p.height.metric,
-      weight: p.weight.metric,
+      weight: p.weight.imperial,
       life_span: p.life_span,
       image: p.image.url,
       temperament: p.temperament,
