@@ -10,7 +10,7 @@ export default function SearchBar() {
 
   function handleInput(e) {
     e.preventDefault();
-    setName(e.target.value);
+    dispatch(getNameDogs(e.target.value));
   }
   function handleSubmit(e) {
     e.preventDefault();

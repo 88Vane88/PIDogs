@@ -48,7 +48,7 @@ export default function Dogs({
               </div>
               <br />
               <div className={style.weight}>
-                <h4>Peso: {weight} kg</h4>
+                <h4>Peso: {weight} lb</h4>
               </div>
             </div>
           </>

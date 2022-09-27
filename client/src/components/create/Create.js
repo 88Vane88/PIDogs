@@ -17,7 +17,7 @@ export default function CreatedDog() {
   const temps = useSelector((state) => state.temps); //traido temps de reduce
   const history = useHistory();
   const [errores, setErrores] = useState({}); //seteo nuevo estado para errores
-  const [errorButton, setErrorButton] = useState(false);
+  /*  const [errorButton, setErrorButton] = useState(false); */
 
   //gurado form y seteo nuevo estado
   const [form, setForm] = useState({
@@ -45,7 +45,6 @@ export default function CreatedDog() {
       [e.target.name]: e.target.value,
     });
     setErrores(validar(form));
-    console.log(form);
   }
 
   //-------------------SELECT TEMPS--------------------------
@@ -137,19 +136,6 @@ export default function CreatedDog() {
       temperament: form.temperament.filter((tem) => tem !== t),
     });
   }
-
-  //--------------------- BUTTON----------------
-  /*   useEffect(() => {
-    if (!errores.name && !errores.height_min && !errores.height_max && !errores.weight_min && !errores.weight_max && !errores.life_span_min && !errores.life_span_max.length > 0) {
-    document.querySelector (`#button`).disabled=false
-    } else {
-    document.querySelector (`#button`).disabled=true
-  },[]
-} */
-
-  /* si tuviera un checkbox...sería:
-  function handleCheck(e){if(e.target.checked){setForm({...input, status:e.target.value})}}
-  */
 
   return (
     <>
@@ -282,6 +268,7 @@ export default function CreatedDog() {
                   ) : null}
                 </div>
                 <br />
+
                 <div>
                   <label htmlFor="image" className={style.form_label}>
                     Imágen:{" "}
@@ -296,8 +283,10 @@ export default function CreatedDog() {
                   />
                 </div>
                 <br />
-                <label className={style.form_label}>Temperamento: </label>
-                <select onChange={(e) => handleSelect(e)}>
+                <label htmlFor="temperament" className={style.form_label}>
+                  Temperamento:{" "}
+                </label>
+                <select id="temperament" onChange={(e) => handleSelect(e)}>
                   {temps.map((t) => (
                     <option value={t.temperament} key={t.id}>
                       {t.temperament}
@@ -313,9 +302,19 @@ export default function CreatedDog() {
 
               <button
                 type="submit"
-                className={style.button}
-                /*  disabled={!errorButton}
-                onClick={handleButton} */
+                className={
+                  Object.keys(errores).length === 0 &&
+                  form.name &&
+                  form.weight_min &&
+                  form.weight_max &&
+                  form.height_min &&
+                  form.height_max &&
+                  form.life_span_min &&
+                  form.life_span_max &&
+                  form.temperament.length !== 0
+                    ? style.button
+                    : style.button_error
+                }
               >
                 Crear Perro
               </button>
