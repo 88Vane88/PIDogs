@@ -20,35 +20,53 @@ export default function Dogs({
   }
 
   return (
-    <div className={style.global}>
+    <div>
       <div>
         {cards.length > 0 ? (
           <>
-            <Link className={style.link} to={"/detail/" + id} key={id}>
-              <img
-                className={style.img}
-                src={image}
-                alt="img not found"
-                width="200px"
-                height="250px"
-              />
-            </Link>
-            <div className={style.info}>
-              <div>
-                <h2 className={style.name}>{name}</h2>
-              </div>
-              <br />
-              <div className={style.temp}>
-                <h3>
-                  Temperamento:
-                  {!createdInDb
-                    ? temperament
-                    : temperament.map((t) => t.temperament + ",")}
-                </h3>
-              </div>
-              <br />
-              <div className={style.weight}>
-                <h4>Peso: {weight} lb</h4>
+            <div className={style.card_father}>
+              <div className={style.card}>
+                {" "}
+                {/* CARD */}
+                <div className={style.front}>
+                  {" "}
+                  {/* CARD_FRONT Y BODY_CARD_FRONT */}
+                  <img
+                    className={style.img}
+                    src={image}
+                    alt="img not found"
+                    width="200px"
+                    height="250px"
+                  />
+                  <div className={style.bg_name}>
+                    <h2 className={style.name}>{name}</h2>
+                  </div>
+                </div>
+                {/* ---------------------------------------------------------------------------- */}
+                <div className={style.card_back_info}></div>
+                <div className={style.back}>
+                  {" "}
+                  {/* CARD_BACK Y BODY_CARD_BACK */}
+                  <br />
+                  <div className={style.temp}>
+                    <h3>
+                      Temperamento:
+                      <br />
+                      {!createdInDb
+                        ? temperament
+                        : temperament.map((t) => t.temperament + ",")}
+                    </h3>
+                  </div>
+                  <br />
+                  <div className={style.weight}>
+                    <h4>Peso: {weight} lb</h4>
+                  </div>
+                  <hr />
+                  <br />
+                  <Link className={style.link} to={"/detail/" + id} key={id}>
+                    Ver detalle
+                  </Link>
+                </div>
               </div>
             </div>
           </>

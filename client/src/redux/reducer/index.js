@@ -92,6 +92,19 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: weightSort,
       };
+    /*    case "ORDER_BY_LIFE":
+      let life =
+        action.payload === "min_life"
+          ? state.dogs.sort((b, c) =>
+              b.life_span > c.life_span ? 1 : b.life_span < c.life_span ? -1 : 0
+            )
+          : state.dogs.sort((b, c) =>
+              b.life_span > c.life_span ? -1 : b.life_span < c.life_span ? 1 : 0
+            );
+      return {
+        ...state,
+        dogs: life,
+      }; */
 
     default:
       return state;

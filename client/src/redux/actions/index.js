@@ -115,3 +115,11 @@ export function orderByPeso(payload) {
     payload,
   };
 }
+
+//--------ORDER LIFE_SPAN
+/* export function orderByLife(payload) {
+  return {
+    type: "ORDER_BY_LIFE",
+    payload,
+  };
+} */

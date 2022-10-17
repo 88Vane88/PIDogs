@@ -65,4 +65,5 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-left: 3%;
+  perspective: 1000px;
 }

@@ -15,7 +15,8 @@ import {
   orderByPeso,
   getTemps,
   filterDogsByTemperament,
-  getDetail,
+  /*   orderByLife, */
+  /*  getDetail, */
 } from "../../redux/actions/index";
 
 export default function Home() {
@@ -74,6 +75,15 @@ export default function Home() {
     setOrdWeight(`Ordenando ${e.target.value}`);
   }
 
+  //ORDEN POR LIFE_SPAN
+  /*   const [ordenamientoLifeS, setOrdenamientoLifeS] = useState("");
+  function handleLife(e) {
+    e.preventDefault();
+    dispatch(orderByLife(e.target.value));
+    setCurrentPage(1);
+    setOrdenamientoLifeS(`Orden ${e.target.value}`);
+  } */
+
   return (
     <div className={style.img}>
       <div>
@@ -101,6 +111,13 @@ export default function Home() {
                   <option value="minimo">Mínimo</option>
                 </select>
               </div>
+              {/*    <div onChange={(e) => handleLife(e)}>
+                <select>
+                  <option value="life">Vida</option>
+                  <option value="min_life">Vida mínima</option>
+                  <option value="life_max_life">Vida máxima</option>
+                </select>
+              </div> */}
               <div className={style.temp}>
                 <select
                   className={style.select}
